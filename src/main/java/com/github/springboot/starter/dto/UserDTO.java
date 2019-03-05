@@ -1,8 +1,15 @@
 package com.github.springboot.starter.dto;
 
+import org.springframework.beans.BeanUtils;
+
 import com.github.springboot.starter.domain.User;
 
+/**
+ * A DTO representing a user
+ */
 public class UserDTO {
+	
+	private Long id;
 	
 	private String login;
 	
@@ -11,9 +18,17 @@ public class UserDTO {
 	public UserDTO() {}
 	
 	public UserDTO(User user) {
-		// TODO 使用BeanUtils转换
+		BeanUtils.copyProperties(user, this);
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getLogin() {
 		return login;
 	}
